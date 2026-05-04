@@ -5,8 +5,9 @@
 <title>Portfolio-Alma Calvo</title>
 </head>
 <body>
+    <main></main>
   <header> <nav class="navbar">
-    <h1> mi portafolio</h1>
+    <h1> <strong>  mi portafolio </strong> </h1>
     <ul> 
         <li>
             <a href="#sobre-mi"> Sobre mi</a>
@@ -20,12 +21,13 @@
         <li>
             <a href="#contacto"> Contacto</a>
         </li>
+    
     <h1>Alma Valentina Calvo Albornoz </h1>
     <img src="fotodeperfil.png" alt="Foto de prefil" width="200" height="200">
     </ul>
     </nav> </header> 
     <section id="sobre-mi"> 
-        <h1>sobre mi</h1>
+        <h1> <em>sobre mi</em></h1> 
     </section>
     <p> Soy estudiante de una escuela tecnica en el ultimo año de la orientacion en Tecnico en Informatico Profecional y Personal por empezar las practicas profecionalizantes. </p>
     
@@ -81,7 +83,7 @@
                          </tfoot>
                          </table>
 
-     <table></table>
+     <table>
          <thead>
             <tr>
                 <th>Habilidad de ofimatica</th>
@@ -106,7 +108,7 @@
                         <td>Avanzado</td>
                         </tr>
                         </tbody>
-                       <tr><td colspan="2"></td>
+                       <tr><td colspan="2">
                                 </td></tr>
                          </tfoot>
                          </table>
@@ -116,36 +118,53 @@
         <h1>mi proyecto </h1> 
     </section>
     <p>Proyecto Dron: En la matera "Proyecto Final" con mi compañero vamos a armar un dron con microcontrolador arduino, donde tendremos dificultades como aprender sobre fisica, soldar, conexiones complicadas, etc.</p>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/cA-RRK3OHVI" 
+     title="YouTube video para saber si seguir con la programacion" frameborder="0" 
+     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+     allowfullscreen></iframe>
+
 
     <section id="contacto"> 
         <h1>contacto </h1>
     </section>
     <p>Comunicate conmigo</p>
     <form id="test" action="#" method="post">
-
-            <div style="margin-bottom: 10x;">
-            <label for="Nombre"> Nombre Completo *</label><br>
-            <input type="text" id="Nombre" name="Nombre" placeholder="Tu nombre y apellido" required>
-            </div>
+        <fieldset>
 
             <div style="margin-bottom: 10x;"></div>
-            <label for="email"> Correo Electronico *</label><br>
-            <input type="email" id="email" name="email" placeholder="Tu @mail.com" required>
-          </div>
+            <label for="Nombre"> Nombre Completo *</label><br>
+            <input type="text" id="Nombre" name="Nombre" placeholder="Tu nombre y apellido" required>
+            
 
-            <div style="margin-bottom: 10x;">
+               <legend> <h1>Contacto</h1></legend>
+            <div style="margin-bottom: 10px;"></div>
+         <label for="email">Correo Electrónico *</label><br>
+          <input 
+         type="email" 
+         id="email" 
+          name="email" 
+          placeholder="Tu @mail.com" 
+          required 
+          aria-required="true">
+          
+
+         
+          <div style="margin-bottom: 10x;"></div>
             <label for="telefono"> Telefono de contacto</label><br>
             <input type="tel" id="telefono" name="telefono" placeholder="+54 9 11 0000-0000" required>
-            </div>
-
+            
+            
             <div style="margin-bottom: 10x;"></div>
             <label for="mensaje"> Mensaje *</label><br>
             <textarea id="mensaje" name="mensaje" rows="6" cols="40" placeholder="Contame sobre tu proyecto o porque te quieres comunicar" required>
-            </textarea><br>
-            </div>
+            </textarea><br> 
+
 
             <button type="submit"> Enviar mensaje</button>
+            </fieldset>
   
     </form>
     <footer> Alma Valentina Calvo Albornoz</footer>
+    </main>
+    </body>
 </html>
