@@ -2,13 +2,19 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="style.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Guides:wght@400..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 <title>Portfolio-Alma Calvo</title>
 </head>
 <body>
-    <main></main>
-  <header> <nav class="navbar">
-    <h1> <strong>  mi portafolio </strong> </h1>
-    <ul> 
+    <div class="contenedor">
+    <main>
+  <header>
+    <h1> <strong>  mi portafolio </strong> </h1> 
+     <nav>
+    <ul class="nav"> 
         <li>
             <a href="#sobre-mi"> Sobre mi</a>
         </li>
@@ -21,20 +27,25 @@
         <li>
             <a href="#contacto"> Contacto</a>
         </li>
-    
-    <h1>Alma Valentina Calvo Albornoz </h1>
-   <img src="imagenes/fotodeperfil.png" alt="Foto de perfil" width="200" height="200">
-    </ul>
-    </nav> </header> 
+        </ul>
+    </nav>
+    <div class="presentacion">
+
+   <img src="imagenes/fotodeperfil.png" alt="Foto de perfil" class="perfil">
+   <h1>Alma Valentina Calvo Albornoz </h1>
+
+   </div>
+    </header> 
     <section id="sobre-mi"> 
-        <h1> <em>sobre mi</em></h1> 
+        <h1 class="secciones"> <em>sobre mi</em></h1> 
     </section>
     <p> Soy estudiante de una escuela tecnica en el ultimo año de la orientacion en Tecnico en Informatico Profecional y Personal por empezar las practicas profecionalizantes. </p>
     
     <section id="habilidades">  
-        <h1>habilidades </h1>
+        <h1 class="secciones">habilidades </h1>
     </section>
-    <table>
+    <div class="contenedor-tablas"> 
+    <table class="tabla-habilidades">
         <thead>
             <tr>
                 <th>Habilidad</th>
@@ -83,7 +94,7 @@
                          </tfoot>
                          </table>
 
-     <table>
+     <table class="tabla-habilidades">
          <thead>
             <tr>
                 <th>Habilidad de ofimatica</th>
@@ -112,10 +123,11 @@
                                 </td></tr>
                          </tfoot>
                          </table>
+    </div>
 
 
     <section id="proyecto">
-        <h1>mi proyecto </h1> 
+        <h1 class="secciones">mi proyecto </h1> 
     </section>
     <p>Proyecto Dron: En la matera "Proyecto Final" con mi compañero vamos a armar un dron con microcontrolador arduino, donde tendremos dificultades como aprender sobre fisica, soldar, conexiones complicadas, etc.</p>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/cA-RRK3OHVI" 
@@ -125,9 +137,10 @@
 
 
     <section id="contacto"> 
-        <h1>contacto </h1>
+        
     </section>
-    <p>Comunicate conmigo</p>
+    <h1 class="secciones">Contacto</h1>
+    <p class="mensaje">Envia tu mensaje!</p>
     <form id="test" action="#" method="post">
         <fieldset>
 
@@ -136,7 +149,7 @@
             <input type="text" id="Nombre" name="Nombre" placeholder="Tu nombre y apellido" required>
             
 
-               <legend> <h1>Contacto</h1></legend>
+               <legend class="contacto"> <h1>Contacto</h1></legend>
             <div style="margin-bottom: 10px;"></div>
          <label for="email">Correo Electrónico *</label><br>
           <input 
@@ -154,7 +167,7 @@
             <input type="tel" id="telefono" name="telefono" placeholder="+54 9 11 0000-0000" required>
             
             
-            <div style="margin-bottom: 10x;"></div>
+            <div style="margin-bottom: 10px;"></div>
             <label for="mensaje"> Mensaje *</label><br>
             <textarea id="mensaje" name="mensaje" rows="6" cols="40" placeholder="Contame sobre tu proyecto o porque te quieres comunicar" required>
             </textarea><br> 
@@ -164,7 +177,8 @@
             </fieldset>
   
     </form>
+     </main>
     <footer> Alma Valentina Calvo Albornoz</footer>
-    </main>
+    </div>
     </body>
 </html>
