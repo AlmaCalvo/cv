@@ -27,13 +27,21 @@ body{
 nav{
     display: flex;
     justify-content: center;
-    padding: var(--espaciado);
 }
-
+.nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 nav ul{
     display: flex;
     gap: var(--espaciado);
     list-style: none;
+    flex-wrap: nowrap; /* evita que bajen de línea */
 }
 
 nav a{
@@ -61,11 +69,13 @@ p{
     font-family: var(--fuentep);
 }
 .presentacion{
-        display: flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     gap: var(--espaciado);
     font-family: var(--fuentenombre);
+    margin-top: 50px;
+    text-align: center;
 }
 
 .perfil{
@@ -171,4 +181,50 @@ button:hover{
 footer{
     background-color:var(--colorp);
     font-family: var(--fuentenombre);
+}
+.proyecto-dron{
+    width: 350px;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+    margin: auto;
+    font-family: var(--fuentep);
+    width: 350px;
+    margin: auto;
+}
+.video-dron{
+    width: 100%;
+    height: 220px;
+    border: none;
+    display: block;
+}
+/* ── Mobile (≤480px) ── */
+@media (max-width: 480px) {
+  header .container {
+    flex-direction: column;
+    height: auto;
+    padding: var(--space-xs) var(--space-md);
+    gap: var(--space-xs);
+  }
+
+  header {
+    height: auto;
+  }
+
+  /* Proyectos: 1 columna */
+  #proyectos article {
+    flex: 1 1 100%;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn-outline,
+  .btn-primary {
+    width: 100%;
+    text-align: center;
+  }
 }

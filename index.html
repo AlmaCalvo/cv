@@ -10,32 +10,28 @@
 </head>
 <body>
     <div class="contenedor">
-    <main>
-  <header>
-    <h1> <strong>  mi portafolio </strong> </h1> 
-     <nav>
-    <ul class="nav"> 
-        <li>
-            <a href="#sobre-mi"> Sobre mi</a>
-        </li>
-        <li>
-            <a href="#habilidades"> Habilidades</a>
-        </li>
-        <li>
-            <a href="#proyecto"> proyecto</a>
-        </li>
-        <li>
-            <a href="#contacto"> Contacto</a>
-        </li>
+ <header>
+    <div class="container">
+      <h1>Mi Portfolio</h1>
+      <nav>
+        <ul>
+          <li><a href="#sobre-mi">Sobre Mí</a></li>
+          <li><a href="#habilidades">Habilidades</a></li>
+          <li><a href="#proyectos">Proyectos</a></li>
+          <li><a href="#contacto">Contacto</a></li>
         </ul>
-    </nav>
+      </nav>
+    </div>
+  </header>
+
+  <main class="contenedor">
     <div class="presentacion">
 
    <img src="imagenes/fotodeperfil.png" alt="Foto de perfil" class="perfil">
    <h1>Alma Valentina Calvo Albornoz </h1>
-
+   </section>
    </div>
-    </header> 
+    </header> </section>
     <section id="sobre-mi"> 
         <h1 class="secciones"> <em>sobre mi</em></h1> 
     </section>
@@ -125,16 +121,12 @@
                          </table>
     </div>
 
+<h1 class="secciones">mi proyecto </h1> 
+    <section id="proyectos" class="proyecto-dron">
 
-    <section id="proyecto">
-        <h1 class="secciones">mi proyecto </h1> 
-    </section>
     <p>Proyecto Dron: En la matera "Proyecto Final" con mi compañero vamos a armar un dron con microcontrolador arduino, donde tendremos dificultades como aprender sobre fisica, soldar, conexiones complicadas, etc.</p>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/cA-RRK3OHVI" 
-     title="YouTube video para saber si seguir con la programacion" frameborder="0" 
-     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-     allowfullscreen></iframe>
-
+    <iframe class="video-dron" width="560" height="315" src="https://www.youtube.com/embed/e7evhjvml_g?si=lK8_Blv85hHpNkbE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </section>
 
     <section id="contacto"> 
         
@@ -159,9 +151,6 @@
           placeholder="Tu @mail.com" 
           required 
           aria-required="true">
-          
-
-         
           <div style="margin-bottom: 10x;"></div>
             <label for="telefono"> Telefono de contacto</label><br>
             <input type="tel" id="telefono" name="telefono" placeholder="+54 9 11 0000-0000" required>
@@ -178,7 +167,7 @@
   
     </form>
      </main>
-    <footer> Alma Valentina Calvo Albornoz</footer>
+    <section id="footer"></section><footer> Alma Valentina Calvo Albornoz</footer></section>
     </div>
     </body>
 </html>
