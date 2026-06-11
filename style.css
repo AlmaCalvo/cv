@@ -1,94 +1,219 @@
-
-:root{
-    --colorp:#B5D2E1;
-    --colors:#1C9BBA;
+:root {
+    --colorp: #B5D2E1;
+    --colors: #1C9BBA;
     --colort: #1735AD;
-    --fuentep:"Open Sans", sans-serif;
+    --fuentep: "Open Sans", sans-serif;
     --fuentetitulos: "Nunito", sans-serif;
     --fuentenombre: "Playfair Display", serif;
     --espaciado: 20px;
-}
-body{
-    background-color:var(--colorp);
-    display:flex;
-    justify-content:center;
-    padding:40px;
-} 
-.contenedor{
-    background-color:white;
-    width:90%;
-    max-width:1200px;
-    padding:40px;
-    border-radius:25px;
-    box-shadow:0px 4px 20px rgba(0,0,0,0.2);
+    --sp-xs: 0.5rem;
+    --sp-sm: 1rem;
+    --sp-md: 2rem;
+    --sp-lg: 4rem;
+    --sp-xl: 6rem;
+    --radio: 12px;
+    --radio-sm: 6px;
 }
 
-/* Barra de navegación */
-nav{
-    display: flex;
-    justify-content: center;
-}
-.nav{
+/* ==================================================
+   1. ESTILOS BASE (Por defecto optimizado para Móvil)
+   ================================================== 
+*/
+
+body {
+    background-color: var(--colorp);
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
-    list-style: none;
-    padding: 0;
+    padding: 15px; /* Reducido para que en celular no te coma tanto espacio */
     margin: 0;
+    min-height: 100vh;
+} 
+
+.contenedor {
+    background-color: white;
+    width: 100%; /* Toma todo el ancho en celular */
+    max-width: 1200px;
+    padding: 20px; /* Menos padding en celular para que no se apriete el contenido */
+    border-radius: 25px;
+    box-shadow: 0px 4px 20px rgba(0,0,0,0.2);
+    box-sizing: border-box;
 }
-nav ul{
+/* ==================================================
+   2. PANTALLAS GRANDES (Computadoras / Tablets de frente)
+   ================================================== 
+*/
+@media (min-width: 768px) {
+    body {
+        padding: 40px;
+    }
+
+    .contenedor {
+        padding: 40px;
+    }
+}
+/* ==================================================
+   BARRA DE NAVEGACIÓN (Por defecto: Celular con Hamburguesa)
+   ================================================== */
+
+nav {
     display: flex;
-    gap: var(--espaciado);
-    list-style: none;
-    flex-wrap: nowrap; /* evita que bajen de línea */
+    justify-content: flex-end; /* Alinea el botón hamburguesa a la derecha */
+    align-items: center;
+    width: 100%;
+    position: relative;
+    padding: 10px 0;
 }
 
-nav a{
-    text-decoration:none;
+/* Escondemos el checkbox real */
+.menu-checkbox {
+    display: none;
+}
+
+/* Estilo del botón Hamburguesa (Las 3 líneas) */
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.hamburger span {
+    background-color: var(--colort);
+    height: 4px;
+    width: 30px;
+    border-radius: 2px;
+    transition: 0.3s ease;
+}
+
+/* Lista de enlaces en Móvil: Se oculta por defecto arriba de la pantalla */
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    list-style: none;
+    padding: 20px 0;
+    margin: 0;
+    
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.1);
+    
+    /* Truco de magia: oculto y encogido por defecto */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: 0.3s ease;
+    z-index: 99;
+}
+
+nav a {
+    text-decoration: none;
     color: black;
-    padding: 10px 20px;
+    padding: 10px 25px;
     border-radius: 50px;
     background-color: var(--colors);
     transition: 0.3s;
     font-family: var(--fuentetitulos);
-}
-
-nav a:hover{
-    background-color: var(--colort);
-    color: white;
-}
-strong{
-    display: flex;
-    justify-content: center;
-    font-family: var(--fuentenombre)
-}
-
-
-p{
-    font-family: var(--fuentep);
-}
-.presentacion{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--espaciado);
-    font-family: var(--fuentenombre);
-    margin-top: 50px;
+    display: block;
     text-align: center;
 }
 
-.perfil{
-    width: 200px;
-    height: 200px;
+nav a:hover {
+    background-color: var(--colort);
+    color: white;
+}
+
+/* TRUCO CSS: Cuando el checkbox esté marcado (:checked), muestra el menú */
+.menu-checkbox:checked ~ .nav-links {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Animación opcional: Transforma la hamburguesa en una "X" al abrirse */
+.menu-checkbox:checked ~ .hamburger span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+.menu-checkbox:checked ~ .hamburger span:nth-child(2) {
+    opacity: 0;
+}
+.menu-checkbox:checked ~ .hamburger span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -7px);
+}
+
+
+/* ==================================================
+   PANTALLAS GRANDES (Computadoras / Tablets)
+   ================================================== */
+@media (min-width: 768px) {
+    nav {
+        justify-content: center; /* Centra el menú en PC */
+    }
+
+    /* Escondemos el botón hamburguesa por completo en PC */
+    .hamburger {
+        display: none;
+    }
+
+    /* Reseteamos la lista para que se vea horizontal y fija */
+    .nav-links {
+        display: flex;
+        flex-direction: row;
+        position: static; /* Pierde el posicionamiento absoluto de móvil */
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        background-color: transparent;
+        padding: 0;
+        justify-content: center;
+        gap: var(--espaciado);
+    }
+}
+
+/* ==================================================
+   ESTILOS DE CONTENIDO (Por defecto: Celulares / Pantallas Chicas)
+   ================================================== */
+
+strong {
+    display: flex;
+    justify-content: center;
+    font-family: var(--fuentenombre);
+}
+
+p {
+    font-family: var(--fuentep);
+}
+
+/* PRESENTACIÓN: En celular va una sola columna (Foto arriba, texto abajo) */
+.presentacion {
+    display: grid;
+    grid-template-columns: 1fr; /* Una columna por defecto */
+    gap: 20px;
+    font-family: var(--fuentenombre);
+    margin-top: 30px;
+    text-align: center;
+    justify-items: center; /* Centra la foto e información */
+}
+
+.perfil {
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     object-fit: cover;
     border: 5px solid var(--colorp);
 }
 
-.secciones{
+.secciones {
     display: inline-block;
-    text-decoration:none;
+    text-decoration: none;
     color: black;
     padding: 10px 20px;
     border-radius: 50px;
@@ -96,109 +221,204 @@ p{
     transition: 0.3s;
     font-family: var(--fuentetitulos);
 }
-.mensaje{
+
+.mensaje {
     font-family: var(--fuentep);
-    font-size: 30px;
+    font-size: 24px; /* Un poco más chico para que no rompa en pantallas pequeñas */
     font-weight: bold;
 }
-.contenedor-tablas{
-    display:flex;
-    justify-content:center;
-    gap:40px;
-    flex-wrap:wrap;
-    margin-top:30px;
-}
-.tabla-habilidades{
-    background-color:white;
-    border-radius:20px;
-    padding:20px;
-    box-shadow:0px 4px 15px rgba(0,0,0,0.2);
-    border-collapse:collapse;
-    width:450px;
-    overflow:hidden;
-    font-family:var(--fuentep);
-}
-.tabla-habilidades th{
-    background-color:var(--colorp);
-    color:var(--colort);
-    padding:15px;
-    font-size:18px;
-}
-.tabla-habilidades td{
-    padding:15px;
-    border-bottom:1px;
-}
-.tabla-habilidades tr:hover{
-    background-color: var(--colorp);
-}
-form{
-    display:flex;
-    justify-content:center;
-    margin-top:50px;
-}
-fieldset{
-    color: var(--colorp);
-    background-color: var(--colort);
-    padding:40px;
-    border-radius:var(--espaciado);
-    border:none;
-    width:500px;
-    box-shadow:0px 4px 15px rgba(0,0,0,0.2);
+
+/* TABLAS DE HABILIDADES */
+.contenedor-tablas {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    width: 100%;
 }
 
-.contacto{
-    font-size: var(--espaciado);
-    font-family:var(--fuentetitulos);
-    color:black;
-}
-input,
-textarea{
-    width:100%;
-    padding:12px;
-    margin-top:8px;
-    margin-bottom:20px;
-    border-radius:10px;
-    border:none;
-    font-size:16px;
-    font-family:var(--fuentep);
-}
-button{
-    background-color: var(--colorp);
-    color:var(--colort);
-    padding:15px 25px;
-    border:none;
-    border-radius:50px;
-    font-size:18px;
-    font-weight:bold;
-    cursor:pointer;
-    transition:0.3s;
-}
-button:hover{
-    background-color:white;
-    transform:scale(1.05);
-    color: var(--colort)
-}
-footer{
-    background-color:var(--colorp);
-    font-family: var(--fuentenombre);
-}
-.proyecto-dron{
-    width: 350px;
-    background: white;
+.tabla-habilidades {
+    background-color: white;
     border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+    border-collapse: collapse;
+    width: 100%;       /* Ocupa el ancho disponible */
+    max-width: 450px;  /* Pero no pasa de 450px en pantallas grandes */
     overflow: hidden;
-    box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
-    margin: auto;
     font-family: var(--fuentep);
-    width: 350px;
-    margin: auto;
 }
-.video-dron{
+
+.tabla-habilidades th {
+    background-color: var(--colorp);
+    color: var(--colort);
+    padding: 15px;
+    font-size: 18px;
+}
+
+.tabla-habilidades td {
+    padding: 15px;
+    border-bottom: 1px solid #eee; /* Añadido color gris suave para que se note la línea */
+}
+
+.tabla-habilidades tr:hover {
+    background-color: var(--colorp);
+}
+
+/* FORMULARIO DE CONTACTO */
+form {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
     width: 100%;
-    height: 220px;
-    border: none;
-    display: block;
 }
+
+fieldset {
+    color: var(--colorp);
+    background-color: var(--colort);
+    padding: 25px; /* Menos padding en celular */
+    border-radius: var(--espaciado);
+    border: none;
+    width: 100%;       /* Se estira bien en celulares */
+    max-width: 500px;  /* Evita que se deforme en monitores grandes */
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+    box-sizing: border-box; /* Clave para que el padding no rompa el ancho total */
+}
+
+.contacto {
+    font-size: var(--espaciado);
+    font-family: var(--fuentetitulos);
+    color: black;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
+    font-family: var(--fuentep);
+    box-sizing: border-box; /* Asegura que no se salgan del fieldset */
+}
+
+button {
+    background-color: var(--colorp);
+    color: var(--colort);
+    padding: 15px 25px;
+    border: none;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 100%; /* Botón grande y cómodo para tocar con el dedo en celular */
+}
+
+button:hover {
+    background-color: white;
+    transform: scale(1.05);
+    color: var(--colort);
+}
+
+footer {
+    background-color: var(--colorp);
+    font-family: var(--fuentenombre);
+    padding: 20px;
+    text-align: center;
+}
+
+
+/* ==================================================
+   CAMBIOS PARA PANTALLAS GRANDES (Computadoras / Tablets)
+   ================================================== */
+@media (min-width: 768px) {
+    /* La presentación vuelve a ponerse de lado (Foto izquierda, info derecha) */
+    .presentacion {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        text-align: left;
+        align-items: center;
+    }
+    
+    .mensaje {
+        font-size: 30px; /* Recupera su tamaño original en PC */
+    }
+
+    button {
+        width: auto; /* El botón del formulario vuelve a su tamaño normal en PC */
+    }
+}
+
+/* ==================
+   SECCIÓN PROYECTOS 
+   ==================*/
+
+/* 1. El contenedor general de las tarjetas */
+.proyectos-grid {
+  display: grid;
+  /* Controla cuántas tarjetas entran por fila */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--sp-md, 20px);
+  width: 100%;
+}
+
+/* 2. La tarjeta individual (Usa Grid interno) */
+.proyecto-card {
+  background: var(--colorp, #ffffff);
+  border: 1px solid var(--colort, #ccc);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  
+  /* POR DEFECTO (Móvil): Una sola columna. El video arriba, el texto abajo */
+  display: grid !important; 
+  grid-template-columns: 1fr;
+}
+
+.proyecto-card:hover { 
+  transform: translateY(-4px); 
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12); 
+}
+
+/* 3. El contenedor del Video */
+.proyecto-imagen { 
+  width: 100%; 
+  aspect-ratio: 16/9; 
+  overflow: hidden; 
+  background: #f3f0ff; 
+}
+
+.proyecto-imagen iframe { 
+  width: 100%; 
+  height: 100%; 
+  border: none;
+}
+
+/* 4. El contenedor de los textos */
+.proyecto-info { 
+  padding: var(--sp-md, 20px); 
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: var(--sp-xs, 10px); 
+}
+
+.proyecto-info h3 { font-size: 1.1rem; font-weight: 700; margin: 0; }
+.proyecto-info p { font-size: 0.9rem; color: black; margin: 0; }
+
+/* 5. PANTALLAS GRANDES: De vertical a horizontal */
+@media (min-width: 768px) {
+  .proyecto-card {
+    /* Forzamos 2 columnas: video izquierda (50%), texto derecha (50%) */
+    grid-template-columns: 1fr 1fr !important; 
+  }
+}
+
+
 /* ── Mobile (≤480px) ── */
 @media (max-width: 480px) {
   header .container {
@@ -210,11 +430,6 @@ footer{
 
   header {
     height: auto;
-  }
-
-  /* Proyectos: 1 columna */
-  #proyectos article {
-    flex: 1 1 100%;
   }
 
   .hero-actions {

@@ -2,10 +2,14 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="style.css"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Guides:wght@400..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style-grid-habilidades.css">
+
+<link rel="stylesheet" href="style-grid-proyectos.css">
 <title>Portfolio-Alma Calvo</title>
 </head>
 <body>
@@ -14,7 +18,13 @@
     <div class="container">
       <h1>Mi Portfolio</h1>
       <nav>
-        <ul>
+        <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+        <label for="menu-toggle" class="hamburger">
+         <span></span>
+         <span></span>
+         <span></span>
+  </label>
+        <ul class="nav-links">
           <li><a href="#sobre-mi">Sobre Mí</a></li>
           <li><a href="#habilidades">Habilidades</a></li>
           <li><a href="#proyectos">Proyectos</a></li>
@@ -86,7 +96,7 @@
                         </tr>
                         </tbody>
                             <tr><td colspan="2"></td>
-                                </td></tr>
+                            </tr>
                          </tfoot>
                          </table>
 
@@ -122,12 +132,33 @@
     </div>
 
 <h1 class="secciones">mi proyecto </h1> 
-    <section id="proyectos" class="proyecto-dron">
+<section id="proyectos" class="seccion">
+    <div class="seccion-contenido">
+      <h2 class="seccion-titulo">Proyectos</h2>
 
-    <p>Proyecto Dron: En la matera "Proyecto Final" con mi compañero vamos a armar un dron con microcontrolador arduino, donde tendremos dificultades como aprender sobre fisica, soldar, conexiones complicadas, etc.</p>
-    <iframe class="video-dron" width="560" height="315" src="https://www.youtube.com/embed/e7evhjvml_g?si=lK8_Blv85hHpNkbE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </section>
+      <!-- CON GRID: .proyectos-grid usa display: grid + auto-fit + minmax -->
+      <div class="proyectos-grid">
 
+        <article class="proyecto-card">
+          <div class="proyecto-imagen">
+            <p>agregar un video para mi proyecto</p>
+            <iframe
+              src="https://www.youtube.com/embed/PwWHL3RyQgk?si=rAZ-LzOamEA2UV3F"
+              title="Demo Portfolio Personal"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="proyecto-info">
+            <h3>Portfolio Personal</h3>
+            <p>Sitio web desarrollado con HTML5, CSS3. Incluye animaciones y diseño moderno adaptado a móviles.</p>
+            <a href="https://github.com/AlmaCalvo/cv" class="btn btn-primario" target="_blank">Ver proyecto →</a>
+          </div>
+        </article>
+      </div><!-- /proyectos-grid -->
+    </div>
+  </section>
     <section id="contacto"> 
         
     </section>
